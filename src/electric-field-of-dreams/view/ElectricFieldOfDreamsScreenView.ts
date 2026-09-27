@@ -21,13 +21,13 @@ import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import { StringManager } from "../../i18n/StringManager.js";
 import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsModel.js";
-import type Particle from "../model/Particle.js";
-import BoundsNode from "./BoundsNode.js";
+import type { Particle } from "../model/Particle.js";
+import { BoundsNode } from "./BoundsNode.js";
 import { ElectricFieldOfDreamsScreenSummaryContent } from "./ElectricFieldOfDreamsScreenSummaryContent.js";
-import ExternalFieldControlPanel from "./ExternalFieldControlPanel.js";
-import FieldGridNode from "./FieldGridNode.js";
-import ParticleControlPanel from "./ParticleControlPanel.js";
-import ParticleNode from "./ParticleNode.js";
+import { ExternalFieldControlPanel } from "./ExternalFieldControlPanel.js";
+import { FieldGridNode } from "./FieldGridNode.js";
+import { ParticleControlPanel } from "./ParticleControlPanel.js";
+import { ParticleNode } from "./ParticleNode.js";
 
 type ElectricFieldOfDreamsScreenViewOptions = ScreenViewOptions & { tandem: Tandem };
 

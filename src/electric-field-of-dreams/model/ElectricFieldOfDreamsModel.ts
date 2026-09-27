@@ -21,8 +21,8 @@ import { TimeModel } from "../../common/TimeModel.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import type { ElectricFieldOfDreamsPreferencesModel } from "../../preferences/ElectricFieldOfDreamsPreferencesModel.js";
 import electricFieldOfDreamsQueryParameters from "../../preferences/electricFieldOfDreamsQueryParameters.js";
-import ChargeFieldCalculator from "./ChargeFieldCalculator.js";
-import Particle from "./Particle.js";
+import { ChargeFieldCalculator } from "./ChargeFieldCalculator.js";
+import { Particle } from "./Particle.js";
 
 export class ElectricFieldOfDreamsModel implements TModel {
   // Every particle in the box (observable so views can add/remove nodes).

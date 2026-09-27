@@ -14,7 +14,7 @@ import { Vector2, Vector2Property } from "scenerystack/dot";
 
 let nextId = 0;
 
-export default class Particle {
+export class Particle {
   // Stable identity so views can match a node to its model on add/remove.
   public readonly id = nextId++;
 

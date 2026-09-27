@@ -14,7 +14,7 @@ import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsM
 
 const LINE_WIDTH = 6;
 
-export default class BoundsNode extends Rectangle {
+export class BoundsNode extends Rectangle {
   public constructor(model: ElectricFieldOfDreamsModel, modelViewTransform: ModelViewTransform2) {
     const dilated = model.bounds.dilated(Constants.PARTICLE_RADIUS);
     const viewBounds = modelViewTransform.modelToViewBounds(dilated);

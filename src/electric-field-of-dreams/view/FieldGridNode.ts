@@ -17,7 +17,7 @@ import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsModel.js";
 
-export default class FieldGridNode extends CanvasNode {
+export class FieldGridNode extends CanvasNode {
   private readonly model: ElectricFieldOfDreamsModel;
   private readonly modelViewTransform: ModelViewTransform2;
 

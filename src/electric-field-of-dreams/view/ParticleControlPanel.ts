@@ -65,7 +65,7 @@ function massIcon(radius: number): Node {
   });
 }
 
-export default class ParticleControlPanel extends Panel {
+export class ParticleControlPanel extends Panel {
   public constructor(model: ElectricFieldOfDreamsModel) {
     const strings = StringManager.getInstance().getParticleStrings();
     const a11y = StringManager.getInstance().getA11yStrings();

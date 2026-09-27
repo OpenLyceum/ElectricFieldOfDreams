@@ -14,12 +14,12 @@ import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import { StringManager } from "../../i18n/StringManager.js";
 import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsModel.js";
-import type Particle from "../model/Particle.js";
+import type { Particle } from "../model/Particle.js";
 
 // Outline width (view pixels) of the particle circle.
 const STROKE_WIDTH = 3;
 
-export default class ParticleNode extends Node {
+export class ParticleNode extends Node {
   public readonly particle: Particle;
 
   public constructor(particle: Particle, model: ElectricFieldOfDreamsModel, modelViewTransform: ModelViewTransform2) {

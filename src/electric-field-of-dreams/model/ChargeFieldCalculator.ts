@@ -7,9 +7,9 @@
  */
 
 import { Vector2 } from "scenerystack/dot";
-import type Particle from "./Particle.js";
+import type { Particle } from "./Particle.js";
 
-export default class ChargeFieldCalculator {
+export class ChargeFieldCalculator {
   private readonly particles: ReadonlyArray<Particle>;
   private readonly k: number;
   private readonly max: number;

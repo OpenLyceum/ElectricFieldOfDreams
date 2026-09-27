@@ -17,7 +17,7 @@ import { Vector2 } from "scenerystack/dot";
 import { ModelViewTransform2 } from "scenerystack/phetcommon";
 import { describe, expect, it } from "vitest";
 import { ElectricFieldOfDreamsModel } from "../../../src/electric-field-of-dreams/model/ElectricFieldOfDreamsModel.js";
-import ParticleNode from "../../../src/electric-field-of-dreams/view/ParticleNode.js";
+import { ParticleNode } from "../../../src/electric-field-of-dreams/view/ParticleNode.js";
 
 describe("ParticleNode disposal", () => {
   it("unlinks its particle listeners on dispose", () => {

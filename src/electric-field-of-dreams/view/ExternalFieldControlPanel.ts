@@ -36,7 +36,7 @@ const ARROW_TAIL_WIDTH = 5;
 const KNOB_RADIUS = 9;
 const KNOB_STROKE = "rgba(0,0,0,0.4)";
 
-export default class ExternalFieldControlPanel extends Panel {
+export class ExternalFieldControlPanel extends Panel {
   // The panel's width is fixed by the drag pad (the transform only affects the field
   // mapping, not the layout), so the screen view can reserve column space before the
   // panel itself is constructed.
