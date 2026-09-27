@@ -3,10 +3,6 @@ import ElectricFieldOfDreamsNamespace from "./ElectricFieldOfDreamsNamespace.js"
 
 const { BLACK, WHITE } = Color;
 
-function profileColor(name: string, def: Color | string, projector: Color | string): ProfileColorProperty {
-  return new ProfileColorProperty(ElectricFieldOfDreamsNamespace, name, { default: def, projector });
-}
-
 // ── Panel fills ───────────────────────────────────────────────────────────────
 // Near-black / near-white neutral fills so panels contrast with both themes.
 const PANEL_FILL_DARK = new Color(40, 40, 40);
@@ -22,53 +18,114 @@ const PAD_FILL_DARK = "rgba(255, 255, 255, 0.12)";
 const PAD_FILL_LIGHT = "rgba(255, 255, 255, 0.65)";
 
 const ElectricFieldOfDreamsColors = {
-  backgroundColorProperty: profileColor("background", BLACK, WHITE),
-  foregroundColorProperty: profileColor("foreground", WHITE, BLACK),
+  backgroundColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "background", {
+    default: BLACK,
+    projector: WHITE,
+  }),
+  foregroundColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "foreground", {
+    default: WHITE,
+    projector: BLACK,
+  }),
 
-  panelFillProperty: profileColor("panelFill", PANEL_FILL_DARK, PANEL_FILL_LIGHT),
-  panelStrokeProperty: profileColor("panelStroke", PANEL_STROKE_DARK, PANEL_STROKE_LIGHT),
-  padFillProperty: profileColor("padFill", PAD_FILL_DARK, PAD_FILL_LIGHT),
+  panelFillProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "panelFill", {
+    default: PANEL_FILL_DARK,
+    projector: PANEL_FILL_LIGHT,
+  }),
+  panelStrokeProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "panelStroke", {
+    default: PANEL_STROKE_DARK,
+    projector: PANEL_STROKE_LIGHT,
+  }),
+  padFillProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "padFill", {
+    default: PAD_FILL_DARK,
+    projector: PAD_FILL_LIGHT,
+  }),
 
   // The bounding box around the play area.
-  boundsStrokeProperty: profileColor("boundsStroke", "rgba(255, 255, 255, 0.35)", "rgba(0, 0, 0, 0.25)"),
+  boundsStrokeProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "boundsStroke", {
+    default: "rgba(255, 255, 255, 0.35)",
+    projector: "rgba(0, 0, 0, 0.25)",
+  }),
 
   // Particles — mid steel-blue body with a dark navy outline; projector uses deeper
   // tones so the body stays distinct on white.
-  particleFillProperty: profileColor("particleFill", "#7986A6", "#5a6a8a"),
-  particleStrokeProperty: profileColor("particleStroke", "#21366B", "#152447"),
-  particleSymbolProperty: profileColor("particleSymbol", WHITE, BLACK),
+  particleFillProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "particleFill", {
+    default: "#7986A6",
+    projector: "#5a6a8a",
+  }),
+  particleStrokeProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "particleStroke", {
+    default: "#21366B",
+    projector: "#152447",
+  }),
+  particleSymbolProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "particleSymbol", {
+    default: WHITE,
+    projector: BLACK,
+  }),
 
   // Electric-field sample arrows (the lattice grid). Lighter on the dark theme so the
   // navy stays visible; the original navy is used in projector mode.
-  fieldArrowProperty: profileColor("fieldArrow", "#6FA8DC", "#21366B"),
+  fieldArrowProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "fieldArrow", {
+    default: "#6FA8DC",
+    projector: "#21366B",
+  }),
 
   // The user-draggable external-field arrow — a warm accent so it is clearly distinct
   // from the field-sample arrows.
-  externalFieldArrowProperty: profileColor("externalFieldArrow", "#F4B860", "#B06A00"),
+  externalFieldArrowProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "externalFieldArrow", {
+    default: "#F4B860",
+    projector: "#B06A00",
+  }),
 
   // Particle-control panel buttons: green for positive/add, red for negative/remove,
   // blue for the mass (light/heavy) selectors — deeper projector fills for white chrome.
-  positiveButtonColorProperty: profileColor("positiveButton", "#A5D6A7", "#66BB6A"),
-  negativeButtonColorProperty: profileColor("negativeButton", "#EF9A9A", "#E57373"),
-  massButtonColorProperty: profileColor("massButton", "#B3E0FF", "#64B5F6"),
+  positiveButtonColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "positiveButton", {
+    default: "#A5D6A7",
+    projector: "#66BB6A",
+  }),
+  negativeButtonColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "negativeButton", {
+    default: "#EF9A9A",
+    projector: "#E57373",
+  }),
+  massButtonColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "massButton", {
+    default: "#B3E0FF",
+    projector: "#64B5F6",
+  }),
 
   // Fleet-standard aliases for shared Panel + ButtonOptions modules.
-  panelBackgroundColorProperty: profileColor("panelBackground", PANEL_FILL_DARK, PANEL_FILL_LIGHT),
-  panelBorderColorProperty: profileColor("panelBorder", PANEL_STROKE_DARK, PANEL_STROKE_LIGHT),
-  textColorProperty: profileColor("text", WHITE, BLACK),
+  panelBackgroundColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "panelBackground", {
+    default: PANEL_FILL_DARK,
+    projector: PANEL_FILL_LIGHT,
+  }),
+  panelBorderColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "panelBorder", {
+    default: PANEL_STROKE_DARK,
+    projector: PANEL_STROKE_LIGHT,
+  }),
+  textColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "text", {
+    default: WHITE,
+    projector: BLACK,
+  }),
 
   // ── Light control surfaces ───────────────────────────────────────────────────
   // White chrome (combo boxes, flat push buttons, editable input fields) stays light
   // in both profiles; its text stays dark.
 
   /** Fill of light control surfaces: combo-box button/list, editable input fields. */
-  controlSurfaceColorProperty: profileColor("controlSurface", "#ffffff", "#ffffff"),
+  controlSurfaceColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "controlSurface", {
+    default: "#ffffff",
+    projector: "#ffffff",
+  }),
 
   /** Fill of a disabled control surface (grayed-out editable input field). */
-  controlSurfaceDisabledColorProperty: profileColor("controlSurfaceDisabled", "#cccccc", "#cccccc"),
+  controlSurfaceDisabledColorProperty: new ProfileColorProperty(
+    ElectricFieldOfDreamsNamespace,
+    "controlSurfaceDisabled",
+    { default: "#cccccc", projector: "#cccccc" },
+  ),
 
   /** Text on light control surfaces: combo items, flat-button labels, field values, preferences. */
-  controlSurfaceTextColorProperty: profileColor("controlSurfaceText", "#1a1a1a", "#1a1a1a"),
+  controlSurfaceTextColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "controlSurfaceText", {
+    default: "#1a1a1a",
+    projector: "#1a1a1a",
+  }),
 };
 
 export default ElectricFieldOfDreamsColors;
