@@ -7,6 +7,7 @@
  */
 
 import { Range } from "scenerystack/dot";
+import ElectricFieldOfDreamsNamespace from "./ElectricFieldOfDreamsNamespace.js";
 
 const ElectricFieldOfDreamsConstants = {
   // ── System bounds (model units) ─────────────────────────────────────────────
@@ -46,6 +47,8 @@ const ElectricFieldOfDreamsConstants = {
   ARROW_HEAD_LENGTH: 8,
   ARROW_MIN_COMPONENT: 4, // below this the arrow is drawn as a small dot
 };
+
+ElectricFieldOfDreamsNamespace.register("ElectricFieldOfDreamsConstants", ElectricFieldOfDreamsConstants);
 
 export default ElectricFieldOfDreamsConstants;
 
