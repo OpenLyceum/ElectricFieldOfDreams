@@ -93,7 +93,9 @@ npm test
 
 `npm run release` runs `npm test` before the version bump, and `src/init.ts` reads `version` from `package.json`, so the About dialog always matches the release.
 
-## Conventions & deliberate deviations
+## Development notes
+
+### Conventions & deliberate deviations
 
 Several quirks are carried over **verbatim** from the PhET source — keep them unless porting fidelity changes:
 
