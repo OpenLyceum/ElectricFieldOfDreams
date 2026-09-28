@@ -1,8 +1,8 @@
 /**
  * ElectricFieldOfDreamsPreferencesModel.ts
  *
- * Sim-specific preferences (Preferences → Simulation) for Electric Field of
- * Dreams. Each preference Property takes its initial value from the
+ * Model for the simulation-specific preferences shown in Preferences →
+ * Simulation. Each preference Property takes its initial value from the
  * corresponding query parameter in electricFieldOfDreamsQueryParameters.
  */
 
