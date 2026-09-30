@@ -15,7 +15,7 @@
  */
 
 import { createObservableArray, NumberProperty, type ObservableArray } from "scenerystack/axon";
-import { Bounds2, Vector2, Vector2Property } from "scenerystack/dot";
+import { Bounds2, dotRandom, Vector2, Vector2Property } from "scenerystack/dot";
 import type { TModel } from "scenerystack/joist";
 import { TimeModel } from "../../common/TimeModel.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
@@ -192,7 +192,10 @@ export class ElectricFieldOfDreamsModel implements TModel {
   // ── Particle management ───────────────────────────────────────────────────────
 
   public addParticle(charge: number, mass: number): Particle {
-    const position = new Vector2(this.minX + Math.random() * this.width, this.minY + Math.random() * this.height);
+    const position = new Vector2(
+      dotRandom.nextDoubleBetween(this.minX, this.minX + this.width),
+      dotRandom.nextDoubleBetween(this.minY, this.minY + this.height),
+    );
     const particle = new Particle(charge, mass, position);
     this.particles.push(particle);
     return particle;
