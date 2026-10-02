@@ -9,13 +9,19 @@
 
 import {
   BasicActionsKeyboardHelpSection,
+  MoveDraggableItemsKeyboardHelpSection,
   SliderControlsKeyboardHelpSection,
+  TimeControlsKeyboardHelpSection,
   TwoColumnKeyboardHelpContent,
 } from "scenerystack/scenery-phet";
 
 export class ElectricFieldOfDreamsKeyboardHelpContent extends TwoColumnKeyboardHelpContent {
   public constructor() {
-    // Left: adjusting sliders. Right: Tab/button navigation.
-    super([new SliderControlsKeyboardHelpSection()], [new BasicActionsKeyboardHelpSection()]);
+    // Left: dragging particles and the external-field pad (arrows/WASD, Shift for fine moves)
+    // and the slider. Right: play/pause and Tab/button navigation.
+    super(
+      [new MoveDraggableItemsKeyboardHelpSection(), new SliderControlsKeyboardHelpSection()],
+      [new TimeControlsKeyboardHelpSection(), new BasicActionsKeyboardHelpSection()],
+    );
   }
 }

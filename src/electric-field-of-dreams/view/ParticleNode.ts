@@ -6,15 +6,19 @@
  * and repositions it, clamped to the play-area bounds. Ported from `views/particle.js`.
  */
 
-import { Vector2 } from "scenerystack/dot";
+import { Dimension2, Vector2 } from "scenerystack/dot";
 import type { ModelViewTransform2 } from "scenerystack/phetcommon";
-import { Circle, Node, RichDragListener, Text } from "scenerystack/scenery";
-import { PhetFont } from "scenerystack/scenery-phet";
+import { Circle, Node, RichDragListener } from "scenerystack/scenery";
+import { MinusNode, PlusNode } from "scenerystack/scenery-phet";
 import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import { StringManager } from "../../i18n/StringManager.js";
 import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsModel.js";
 import type { Particle } from "../model/Particle.js";
+
+/** Plus/minus glyph size as fractions of the particle radius. */
+const SYMBOL_LENGTH_FACTOR = 1.2;
+const SYMBOL_THICKNESS_FACTOR = 0.28;
 
 // Outline width (view pixels) of the particle circle.
 const STROKE_WIDTH = 3;
@@ -42,11 +46,14 @@ export class ParticleNode extends Node {
       lineWidth: STROKE_WIDTH,
     });
 
-    const symbol = new Text(particle.charge >= 0 ? "+" : "−", {
-      font: new PhetFont({ size: Math.round(radius * 1.4), weight: "bold" }),
+    // The same plus/minus glyphs as the control panel's charge buttons, sized to the particle.
+    const glyphSize = new Dimension2(radius * SYMBOL_LENGTH_FACTOR, radius * SYMBOL_THICKNESS_FACTOR);
+    const symbolOptions = {
+      size: glyphSize,
       fill: ElectricFieldOfDreamsColors.particleSymbolProperty,
       center: Vector2.ZERO,
-    });
+    };
+    const symbol = particle.charge >= 0 ? new PlusNode(symbolOptions) : new MinusNode(symbolOptions);
 
     this.children = [circle, symbol];
 

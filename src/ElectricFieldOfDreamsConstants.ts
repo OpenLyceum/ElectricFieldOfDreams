@@ -53,4 +53,8 @@ ElectricFieldOfDreamsNamespace.register("ElectricFieldOfDreamsConstants", Electr
 export default ElectricFieldOfDreamsConstants;
 
 /** Corner radius shared by themed panels (px). */
-export const PANEL_CORNER_RADIUS = 5;
+export const PANEL_CORNER_RADIUS = 6;
+
+/** Inner margins of the control panels (ElectricFieldOfDreamsPanel), px. */
+export const PANEL_X_MARGIN = 12;
+export const PANEL_Y_MARGIN = 10;

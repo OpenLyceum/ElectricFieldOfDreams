@@ -16,7 +16,8 @@ import { BooleanProperty } from "scenerystack/axon";
 import { Dimension2 } from "scenerystack/dot";
 import { Circle, HBox, Node, Text, VBox } from "scenerystack/scenery";
 import { MinusNode, PhetFont, PlusNode } from "scenerystack/scenery-phet";
-import { Panel, RectangularPushButton, RectangularRadioButtonGroup } from "scenerystack/sun";
+import { RectangularPushButton, RectangularRadioButtonGroup } from "scenerystack/sun";
+import { ElectricFieldOfDreamsPanel } from "../../common/ElectricFieldOfDreamsPanel.js";
 import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import { StringManager } from "../../i18n/StringManager.js";
@@ -24,9 +25,6 @@ import type { ElectricFieldOfDreamsModel } from "../model/ElectricFieldOfDreamsM
 
 const TITLE_FONT_SIZE = 16;
 
-const PANEL_CORNER_RADIUS = 6;
-const PANEL_X_MARGIN = 12;
-const PANEL_Y_MARGIN = 10;
 const VBOX_SPACING = 10;
 const GROUP_SPACING = 10;
 
@@ -65,7 +63,11 @@ function massIcon(radius: number): Node {
   });
 }
 
-export class ParticleControlPanel extends Panel {
+export class ParticleControlPanel extends ElectricFieldOfDreamsPanel {
+  /** View-only selection state; not part of the model, so Reset All resets it here. */
+  private readonly chargeIsPositiveProperty: BooleanProperty;
+  private readonly massIsLightProperty: BooleanProperty;
+
   public constructor(model: ElectricFieldOfDreamsModel) {
     const strings = StringManager.getInstance().getParticleStrings();
     const a11y = StringManager.getInstance().getA11yStrings();
@@ -166,11 +168,6 @@ export class ParticleControlPanel extends Panel {
     });
 
     super(content, {
-      fill: ElectricFieldOfDreamsColors.panelFillProperty,
-      stroke: ElectricFieldOfDreamsColors.panelStrokeProperty,
-      cornerRadius: PANEL_CORNER_RADIUS,
-      xMargin: PANEL_X_MARGIN,
-      yMargin: PANEL_Y_MARGIN,
       accessibleName: a11y.controls.particlePanelStringProperty,
       accessibleHelpText: a11y.controls.particlePanelHelpStringProperty,
     });
@@ -179,5 +176,14 @@ export class ParticleControlPanel extends Panel {
     model.particles.lengthProperty.link((length) => {
       removeButton.enabled = length > 0;
     });
+
+    this.chargeIsPositiveProperty = chargeIsPositiveProperty;
+    this.massIsLightProperty = massIsLightProperty;
+  }
+
+  /** Restores the charge and mass selections to positive and light. */
+  public reset(): void {
+    this.chargeIsPositiveProperty.reset();
+    this.massIsLightProperty.reset();
   }
 }

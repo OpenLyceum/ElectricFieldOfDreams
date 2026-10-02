@@ -29,7 +29,7 @@ import { type EmptySelfOptions, optionize } from "scenerystack/phet-core";
 import type { Node } from "scenerystack/scenery";
 import { Panel, type PanelOptions } from "scenerystack/sun";
 import ElectricFieldOfDreamsColors from "../ElectricFieldOfDreamsColors.js";
-import { PANEL_CORNER_RADIUS } from "../ElectricFieldOfDreamsConstants.js";
+import { PANEL_CORNER_RADIUS, PANEL_X_MARGIN, PANEL_Y_MARGIN } from "../ElectricFieldOfDreamsConstants.js";
 
 export type ElectricFieldOfDreamsPanelOptions = PanelOptions;
 
@@ -40,8 +40,8 @@ export class ElectricFieldOfDreamsPanel extends Panel {
         fill: ElectricFieldOfDreamsColors.panelBackgroundColorProperty,
         stroke: ElectricFieldOfDreamsColors.panelBorderColorProperty,
         cornerRadius: PANEL_CORNER_RADIUS,
-        xMargin: 12,
-        yMargin: 10,
+        xMargin: PANEL_X_MARGIN,
+        yMargin: PANEL_Y_MARGIN,
       },
       providedOptions,
     );

@@ -31,9 +31,11 @@ export class ElectricFieldOfDreamsModel implements TModel {
   // The uniform external field, set by the External Field control (model units).
   public readonly externalFieldProperty = new Vector2Property(new Vector2(0, 0));
 
-  // Number of arrows along each axis of the field-visualization lattice.
+  // Number of arrows along each axis of the field-visualization lattice. Follows
+  // the Preferences "Field Density" setting live when preferences are given.
   public readonly fieldLatticeWidthProperty = new NumberProperty(
     electricFieldOfDreamsQueryParameters.fieldLatticeWidth,
+    { range: Constants.DISCRETENESS_RANGE, numberType: "Integer" },
   );
 
   /** Play/pause clock — starts playing (continuous animation). */
@@ -59,9 +61,11 @@ export class ElectricFieldOfDreamsModel implements TModel {
 
   public constructor(preferences?: ElectricFieldOfDreamsPreferencesModel) {
     this.preferences = preferences;
-    if (preferences) {
-      this.fieldLatticeWidthProperty.value = preferences.fieldLatticeWidthProperty.value;
-    }
+
+    // Both live as long as the sim, so the link is never removed.
+    preferences?.fieldLatticeWidthProperty.link((width) => {
+      this.fieldLatticeWidthProperty.value = width;
+    });
   }
 
   // ── Stepping ────────────────────────────────────────────────────────────────

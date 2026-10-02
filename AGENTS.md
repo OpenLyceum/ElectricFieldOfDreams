@@ -13,7 +13,7 @@ Physics for educators: `doc/model.md`. Architecture: `doc/implementation-notes.m
 | Area | Location |
 |---|---|
 | Screen | `src/electric-field-of-dreams/ElectricFieldOfDreamsScreen.ts` |
-| Model | `model/ElectricFieldOfDreamsModel.ts` (laws + stepping), `Particle.ts`, `ChargeFieldCalculator.ts` (arrow-grid sampling), `ElectricFieldOfDreamsConstants.ts` |
+| Model | `model/ElectricFieldOfDreamsModel.ts` (laws + stepping), `Particle.ts`, `ChargeFieldCalculator.ts` (arrow-grid sampling), `src/ElectricFieldOfDreamsConstants.ts` (root of `src/`, not under `model/`) |
 | View | `view/ElectricFieldOfDreamsScreenView.ts`, `ParticleNode.ts`, `FieldGridNode.ts` (arrow lattice), `ExternalFieldControlPanel.ts`, `ParticleControlPanel.ts`, `BoundsNode.ts`, `ElectricFieldOfDreamsScreenSummaryContent.ts` |
 | Colors / strings | `ElectricFieldOfDreamsColors.ts`, `src/i18n/StringManager.ts` |
 | Preferences / query params | `src/preferences/` (`fieldLatticeWidth` query param) |
@@ -49,7 +49,6 @@ locale JSON, via `StringManager.getA11yStrings()`.
 
 ## Compliance carve-outs
 
-- **Nested constants:** screen-scoped `*Constants.ts` under `src/electric-field-of-dreams/model/` (PhET port layout).
 - **Hardcoded colors:** `rgba(0,0,0,0.4)` knob stroke in `ExternalFieldControlPanel.ts` — translucent decorative border, not a profile color.
 
 

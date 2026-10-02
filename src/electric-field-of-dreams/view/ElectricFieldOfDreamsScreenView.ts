@@ -14,9 +14,10 @@ import { ModelViewTransform2 } from "scenerystack/phetcommon";
 import { HBox, Node } from "scenerystack/scenery";
 import { NumberControl, PhetFont, PlayPauseButton, ResetAllButton, StepForwardButton } from "scenerystack/scenery-phet";
 import { ScreenView, type ScreenViewOptions } from "scenerystack/sim";
-import { Panel } from "scenerystack/sun";
+import type { Panel } from "scenerystack/sun";
 import type { Tandem } from "scenerystack/tandem";
 import { FLAT_RESET_ALL_BUTTON_OPTIONS } from "../../common/ElectricFieldOfDreamsButtonOptions.js";
+import { ElectricFieldOfDreamsPanel } from "../../common/ElectricFieldOfDreamsPanel.js";
 import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
 import Constants from "../../ElectricFieldOfDreamsConstants.js";
 import { StringManager } from "../../i18n/StringManager.js";
@@ -135,6 +136,7 @@ export class ElectricFieldOfDreamsScreenView extends ScreenView {
       listener: () => {
         this.interruptSubtreeInput();
         model.reset();
+        particleControlPanel.reset();
       },
       right: layoutBounds.maxX - MARGIN,
       bottom: layoutBounds.maxY - MARGIN,
@@ -199,13 +201,7 @@ export class ElectricFieldOfDreamsScreenView extends ScreenView {
         accessibleHelpText: a11y.controls.fieldDensityHelpStringProperty,
       },
     );
-    return new Panel(control, {
-      fill: ElectricFieldOfDreamsColors.panelFillProperty,
-      stroke: ElectricFieldOfDreamsColors.panelStrokeProperty,
-      cornerRadius: 6,
-      xMargin: 12,
-      yMargin: 10,
-    });
+    return new ElectricFieldOfDreamsPanel(control);
   }
 
   public override step(_dt: number): void {

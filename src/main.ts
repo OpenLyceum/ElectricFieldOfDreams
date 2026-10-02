@@ -67,12 +67,10 @@ onReadyToLaunch(() => {
       },
     }),
 
-    // Optional: fill in credits shown in Help → About
+    // Shown in Help → About; see CREDITS.md.
     credits: {
-      leadDesign: "",
-      softwareDevelopment: "",
-      team: "",
-      qualityAssurance: "",
+      softwareDevelopment: "OpenLyceum",
+      team: "Inspired by PhET Interactive Simulations, University of Colorado Boulder",
     },
   });
 
