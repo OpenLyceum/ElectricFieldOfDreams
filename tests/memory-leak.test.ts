@@ -4,9 +4,11 @@
  */
 
 import { Vector2 } from "scenerystack/dot";
+import { ModelViewTransform2 } from "scenerystack/phetcommon";
 import { describe, expect, it } from "vitest";
 import { TimeModel } from "../src/common/TimeModel.js";
 import { ElectricFieldOfDreamsModel } from "../src/electric-field-of-dreams/model/ElectricFieldOfDreamsModel.js";
+import { FieldGridNode } from "../src/electric-field-of-dreams/view/FieldGridNode.js";
 import { describeDisposalLeaks, forceGC } from "./helpers/memoryLeak.js";
 
 function createAndDropModel(): WeakRef<object> {
@@ -36,4 +38,14 @@ describe("Memory leak regression", () => {
   });
 });
 
-describeDisposalLeaks([{ name: "TimeModel", create: () => new TimeModel(), idempotentDispose: true }]);
+describeDisposalLeaks([
+  { name: "TimeModel", create: () => new TimeModel(), idempotentDispose: true },
+  {
+    name: "FieldGridNode",
+    create: () => {
+      const model = new ElectricFieldOfDreamsModel();
+      const transform = ModelViewTransform2.createIdentity();
+      return new FieldGridNode(model, transform, model.bounds);
+    },
+  },
+]);

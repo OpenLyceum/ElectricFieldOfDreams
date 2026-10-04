@@ -21,6 +21,8 @@ export class FieldGridNode extends CanvasNode {
   private readonly model: ElectricFieldOfDreamsModel;
   private readonly modelViewTransform: ModelViewTransform2;
 
+  private readonly invalidateField = (): void => this.invalidatePaint();
+
   public constructor(
     model: ElectricFieldOfDreamsModel,
     modelViewTransform: ModelViewTransform2,
@@ -31,9 +33,16 @@ export class FieldGridNode extends CanvasNode {
     this.modelViewTransform = modelViewTransform;
 
     // Repaint immediately on the discrete changes (density, external field, theme).
-    model.fieldLatticeWidthProperty.link(() => this.invalidatePaint());
-    model.externalFieldProperty.link(() => this.invalidatePaint());
-    ElectricFieldOfDreamsColors.fieldArrowProperty.link(() => this.invalidatePaint());
+    model.fieldLatticeWidthProperty.link(this.invalidateField);
+    model.externalFieldProperty.link(this.invalidateField);
+    ElectricFieldOfDreamsColors.fieldArrowProperty.link(this.invalidateField);
+  }
+
+  public override dispose(): void {
+    this.model.fieldLatticeWidthProperty.unlink(this.invalidateField);
+    this.model.externalFieldProperty.unlink(this.invalidateField);
+    ElectricFieldOfDreamsColors.fieldArrowProperty.unlink(this.invalidateField);
+    super.dispose();
   }
 
   /** Called by the screen view every animation frame so moving charges update the field. */
