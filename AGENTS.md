@@ -49,7 +49,7 @@ locale JSON, via `StringManager.getA11yStrings()`.
 
 ## Compliance carve-outs
 
-- **Hardcoded colors:** `rgba(0,0,0,0.4)` knob stroke in `ExternalFieldControlPanel.ts` — translucent decorative border, not a profile color.
+None.
 
 ## Testing
 

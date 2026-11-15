@@ -32,7 +32,6 @@ const ARROW_HEAD_HEIGHT = 14;
 const ARROW_TAIL_WIDTH = 5;
 
 const KNOB_RADIUS = 9;
-const KNOB_STROKE = "rgba(0,0,0,0.4)";
 
 export class ExternalFieldControlPanel extends ElectricFieldOfDreamsPanel {
   // The panel's width is fixed by the drag pad (the transform only affects the field
@@ -63,7 +62,7 @@ export class ExternalFieldControlPanel extends ElectricFieldOfDreamsPanel {
     const knob = new Circle(KNOB_RADIUS, {
       cursor: "pointer",
       fill: ElectricFieldOfDreamsColors.externalFieldArrowProperty,
-      stroke: KNOB_STROKE,
+      stroke: ElectricFieldOfDreamsColors.externalFieldKnobStrokeProperty,
     });
     const padLayer = new Node({
       clipArea: Shape.bounds(new Bounds2(-HALF, -HALF, HALF, HALF)),

@@ -75,6 +75,12 @@ const ElectricFieldOfDreamsColors = {
     projector: "#B06A00",
   }),
 
+  // Keep the field-control knob's translucent outline identical in both profiles.
+  externalFieldKnobStrokeProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "externalFieldKnobStroke", {
+    default: PANEL_STROKE_LIGHT,
+    projector: PANEL_STROKE_LIGHT,
+  }),
+
   // Particle-control panel buttons: green for positive/add, red for negative/remove,
   // blue for the mass (light/heavy) selectors — deeper projector fills for white chrome.
   positiveButtonColorProperty: new ProfileColorProperty(ElectricFieldOfDreamsNamespace, "positiveButton", {
