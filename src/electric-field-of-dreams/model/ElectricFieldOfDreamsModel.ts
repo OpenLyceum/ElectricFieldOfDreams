@@ -149,7 +149,7 @@ export class ElectricFieldOfDreamsModel implements TModel {
   }
 
   // ── Law 3: uniform external field (a += qE/m) ─────────────────────────────────
-  private applyExternalField(active: ReadonlyArray<Particle>): void {
+  private applyExternalField(active: readonly Particle[]): void {
     const field = this.externalFieldProperty.value;
     for (const p of active) {
       const accel = field.timesScalar(p.charge / p.mass);
@@ -158,7 +158,7 @@ export class ElectricFieldOfDreamsModel implements TModel {
   }
 
   // ── Law 4: Coulomb inter-particle force ───────────────────────────────────────
-  private applyCoulomb(active: ReadonlyArray<Particle>, sources: ReadonlyArray<Particle>): void {
+  private applyCoulomb(active: readonly Particle[], sources: readonly Particle[]): void {
     for (const target of active) {
       let total = new Vector2(0, 0);
       for (const source of sources) {

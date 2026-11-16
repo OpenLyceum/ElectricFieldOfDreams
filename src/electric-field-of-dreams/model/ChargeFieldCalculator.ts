@@ -10,11 +10,11 @@ import { Vector2 } from "scenerystack/dot";
 import type { Particle } from "./Particle.js";
 
 export class ChargeFieldCalculator {
-  private readonly particles: ReadonlyArray<Particle>;
+  private readonly particles: readonly Particle[];
   private readonly k: number;
   private readonly max: number;
 
-  public constructor(particles: ReadonlyArray<Particle>, k: number, max: number) {
+  public constructor(particles: readonly Particle[], k: number, max: number) {
     this.particles = particles;
     this.k = k;
     this.max = max;
