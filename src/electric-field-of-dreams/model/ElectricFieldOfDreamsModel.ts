@@ -39,7 +39,7 @@ export class ElectricFieldOfDreamsModel implements TModel {
   );
 
   /** Play/pause clock — starts playing (continuous animation). */
-  public readonly timer = new TimeModel(true);
+  public readonly timer = new TimeModel({ initiallyPlaying: true });
 
   // System bounds (model units): a SYSTEM_WIDTH × SYSTEM_HEIGHT box at (MIN_X, MIN_Y).
   public readonly minX = Constants.SYSTEM_MIN_X;
