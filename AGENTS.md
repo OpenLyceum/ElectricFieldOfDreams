@@ -63,7 +63,7 @@ None.
 Actual specs:
 
 - `tests/electric-field-of-dreams/model/ElectricFieldOfDreamsModel.test.ts`
-- `tests/memory-leak.test.ts`
+- `tests/memory-leak.test.ts` (model, TimeModel, FieldGridNode, and ParticleNode add/remove cycles against a live model; the focused-hotkey path of `ParticleNode` needs a browser)
 
 Run `npm test`. CI runs the suite when a `test` script is present.
 
