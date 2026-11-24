@@ -11,6 +11,7 @@
  */
 
 import type { Bounds2 } from "scenerystack/dot";
+import { roundSymmetric } from "scenerystack/dot";
 import type { ModelViewTransform2 } from "scenerystack/phetcommon";
 import { CanvasNode } from "scenerystack/scenery";
 import ElectricFieldOfDreamsColors from "../../ElectricFieldOfDreamsColors.js";
@@ -54,14 +55,14 @@ export class FieldGridNode extends CanvasNode {
     const mvt = this.modelViewTransform;
     const model = this.model;
 
-    const x = Math.round(mvt.modelToViewX(model.minX));
-    const y = Math.round(mvt.modelToViewY(model.minY));
-    const w = Math.round(mvt.modelToViewDeltaX(model.width));
-    const h = Math.round(mvt.modelToViewDeltaY(model.height));
+    const x = roundSymmetric(mvt.modelToViewX(model.minX));
+    const y = roundSymmetric(mvt.modelToViewY(model.minY));
+    const w = roundSymmetric(mvt.modelToViewDeltaX(model.width));
+    const h = roundSymmetric(mvt.modelToViewDeltaY(model.height));
 
-    const tailWidth = Math.max(1, Math.round(mvt.modelToViewDeltaX(Constants.ARROW_TAIL_WIDTH)));
-    const headWidth = Math.round(mvt.modelToViewDeltaX(Constants.ARROW_HEAD_WIDTH));
-    const headLength = Math.round(mvt.modelToViewDeltaX(Constants.ARROW_HEAD_LENGTH));
+    const tailWidth = Math.max(1, roundSymmetric(mvt.modelToViewDeltaX(Constants.ARROW_TAIL_WIDTH)));
+    const headWidth = roundSymmetric(mvt.modelToViewDeltaX(Constants.ARROW_HEAD_WIDTH));
+    const headLength = roundSymmetric(mvt.modelToViewDeltaX(Constants.ARROW_HEAD_LENGTH));
     const minComponent = Constants.ARROW_MIN_COMPONENT;
 
     const n = model.fieldLatticeWidthProperty.value;
