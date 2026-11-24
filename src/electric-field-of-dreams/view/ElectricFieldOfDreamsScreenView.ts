@@ -8,7 +8,7 @@
  */
 
 import { DerivedProperty } from "scenerystack/axon";
-import { Dimension2, Vector2 } from "scenerystack/dot";
+import { Dimension2, roundSymmetric, Vector2 } from "scenerystack/dot";
 import { type EmptySelfOptions, optionize } from "scenerystack/phet-core";
 import { ModelViewTransform2 } from "scenerystack/phetcommon";
 import { HBox, Node } from "scenerystack/scenery";
@@ -195,7 +195,7 @@ export class ElectricFieldOfDreamsScreenView extends ScreenView {
       {
         titleNodeOptions: { font, fill: ElectricFieldOfDreamsColors.foregroundColorProperty },
         numberDisplayOptions: { textOptions: { font }, decimalPlaces: 0 },
-        sliderOptions: { trackSize: new Dimension2(120, 3), constrainValue: (value: number) => Math.round(value) },
+        sliderOptions: { trackSize: new Dimension2(120, 3), constrainValue: (value: number) => roundSymmetric(value) },
         delta: 1,
         accessibleName: a11y.controls.fieldDensityStringProperty,
         accessibleHelpText: a11y.controls.fieldDensityHelpStringProperty,
